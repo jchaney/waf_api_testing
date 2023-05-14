@@ -45,15 +45,11 @@ def main():
         z = Zone(zone)
         rulesets = cf_s.get(f'{CF_BASE_URL}/zones/{z.id}/rulesets').json()['result'] # GET rulesets
         for ruleset in rulesets:
-            ruleset_id = ruleset['id']
-            ruleset_name = ruleset['name']
-            ruleset_description = ruleset['description']
-            ruleset_phase = ruleset['phase']
             z.rulesets.append({
-                'id': ruleset_id,
-                'name': ruleset_name,
-                'description': ruleset_description,
-                'phase': ruleset_phase
+                'id': ruleset['id'],
+                'name': ruleset['name'],
+                'description': ruleset['description'],
+                'phase': ruleset['phase']
             })
 
         # Make a pretty table with the data
